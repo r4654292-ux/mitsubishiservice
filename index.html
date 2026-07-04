@@ -166,7 +166,7 @@
   }
   .hero h1 em{
     font-style:normal;
-    color:var(--red);
+    color:#ff4d63;
   }
   .hero-sub{
     max-width:520px;
@@ -231,7 +231,10 @@
     transition:background .15s;
   }
   .service-card:hover{background:var(--surface);}
-  .service-num{font-family:var(--font-mono);font-size:12px;color:var(--red);margin-bottom:22px;display:block;}
+  .service-num{
+    font-family:var(--font-mono);font-size:12px;color:#fff;margin-bottom:22px;display:inline-block;
+    padding-left:12px;border-left:2px solid var(--red);
+  }
   .service-card h3{font-size:18px;color:#fff;margin-bottom:12px;text-transform:none;letter-spacing:0;}
   .service-card p{font-size:14px;color:var(--text-dim);}
 
@@ -249,7 +252,7 @@
   .process-step{position:relative;padding:24px 18px 0;border-top:2px solid var(--line);}
   .process-step.is-active{border-top-color:var(--red);}
   .process-step .pn{font-family:var(--font-display);font-size:30px;color:var(--text-mute);}
-  .process-step.is-active .pn{color:var(--red);}
+  .process-step.is-active .pn{color:#fff;}
   .process-step h4{font-size:14px;color:#fff;text-transform:none;letter-spacing:0;margin:12px 0 8px;}
   .process-step p{font-size:13px;color:var(--text-dim);}
 
@@ -266,24 +269,64 @@
     display:flex;align-items:center;gap:10px;
   }
   .model-chip .diamond{width:7px;height:7px;}
-  .model-chip:hover{border-color:var(--red);color:#fff;}
+  .model-chip:hover{border-color:var(--red);background:rgba(226,0,42,.08);color:#fff;}
 
-  /* ===== Reviews / cases ===== */
-  .cases-grid{
-    display:grid;grid-template-columns:repeat(3,1fr);gap:24px;
-  }
-  .case-card{
+  /* ===== Reviews ===== */
+  .reviews-summary{
+    display:flex;gap:56px;align-items:center;
+    padding:28px 32px;
     background:var(--surface);
     border:1px solid var(--line);
-    padding:28px;
+    margin-bottom:40px;
+    flex-wrap:wrap;
   }
-  .case-card .car{
-    font-family:var(--font-mono);font-size:12px;color:var(--red);
-    letter-spacing:.06em;text-transform:uppercase;margin-bottom:16px;
-    display:block;
+  .rs-score{text-align:center;flex:none;}
+  .rs-score b{font-family:var(--font-display);font-size:46px;color:#fff;line-height:1;}
+  .rs-stars{color:#ffb238;font-size:16px;letter-spacing:2px;margin:8px 0 6px;}
+  .rs-score span{font-size:12px;color:var(--text-mute);font-family:var(--font-mono);}
+  .rs-bars{flex:1;min-width:220px;display:flex;flex-direction:column;gap:7px;}
+  .rs-bar-row{display:flex;align-items:center;gap:12px;font-family:var(--font-mono);font-size:12px;color:var(--text-mute);}
+  .rs-bar-row>span:first-child{width:10px;}
+  .rs-bar{flex:1;height:6px;background:var(--line);border-radius:3px;overflow:hidden;}
+  .rs-bar i{display:block;height:100%;background:#ffb238;}
+  .rs-pct{width:32px;text-align:right;}
+
+  .reviews-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+  .review-card{
+    background:var(--surface);border:1px solid var(--line);padding:26px;
+    display:flex;flex-direction:column;gap:16px;
   }
-  .case-card p{color:var(--text-dim);font-size:14px;margin-bottom:18px;}
-  .case-foot{display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--line);padding-top:16px;font-size:13px;color:var(--text-mute);}
+  .review-top{display:flex;align-items:center;gap:12px;}
+  .avatar{
+    width:40px;height:40px;border-radius:50%;flex:none;
+    background:var(--surface-2);border:1px solid var(--line);
+    display:flex;align-items:center;justify-content:center;
+    font-family:var(--font-mono);font-size:13px;color:var(--text-dim);
+  }
+  .review-top>div:nth-child(2){flex:1;}
+  .rv-name{font-size:14px;color:#fff;font-weight:600;}
+  .rv-car{font-size:12px;color:var(--text-mute);font-family:var(--font-mono);margin-top:2px;}
+  .rv-stars{color:#ffb238;font-size:13px;letter-spacing:1px;flex:none;}
+  .review-card p{font-size:14px;color:var(--text-dim);flex:1;}
+  .rv-date{font-size:12px;color:var(--text-mute);font-family:var(--font-mono);}
+  .reviews-note{margin-top:24px;font-size:12px;color:var(--text-mute);}
+  .price-table{
+    border:1px solid var(--line);
+  }
+  .price-row{
+    display:flex;justify-content:space-between;gap:24px;
+    padding:16px 22px;
+    border-bottom:1px solid var(--line);
+    font-size:14px;
+  }
+  .price-row:last-child{border-bottom:none;}
+  .price-row span:first-child{color:var(--text-dim);}
+  .price-row span:last-child{color:#fff;font-family:var(--font-mono);font-size:13px;flex:none;text-align:right;}
+  .price-row-head{background:var(--surface);}
+  .price-row-head span{
+    font-family:var(--font-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-mute)!important;
+  }
+  .price-note{margin-top:18px;font-size:12px;color:var(--text-mute);}
 
   /* ===== FAQ ===== */
   .faq-list{max-width:820px;}
@@ -294,15 +337,18 @@
     cursor:pointer;color:#fff;font-size:16px;font-family:var(--font-body);font-weight:500;
   }
   .faq-q .plus{
-    font-family:var(--font-mono);font-size:20px;color:var(--red);transition:transform .2s;flex:none;margin-left:20px;
+    font-family:var(--font-mono);font-size:16px;color:#fff;transition:transform .2s;flex:none;margin-left:20px;
+    width:28px;height:28px;border-radius:50%;
+    background:rgba(226,0,42,.22);border:1px solid var(--red);
+    display:flex;align-items:center;justify-content:center;
   }
   .faq-item.open .plus{transform:rotate(45deg);}
   .faq-a{
-    max-height:0;overflow:hidden;transition:max-height .25s ease;
+    max-height:0;overflow:hidden;transition:max-height .3s ease;
     color:var(--text-dim);font-size:14px;
   }
   .faq-a-in{padding-bottom:24px;max-width:640px;}
-  .faq-item.open .faq-a{max-height:260px;}
+  .faq-item.open .faq-a{max-height:600px;}
 
   /* ===== Booking form ===== */
   .booking{
@@ -384,15 +430,20 @@
     .services-grid{grid-template-columns:repeat(2,1fr);}
     .adv-grid{grid-template-columns:1fr 1fr;}
     .process-list{grid-template-columns:repeat(2,1fr);}
-    .cases-grid{grid-template-columns:1fr;}
+    .reviews-grid{grid-template-columns:1fr 1fr;}
+    .reviews-summary{gap:32px;}
     .booking{grid-template-columns:1fr;}
     .footer-grid{grid-template-columns:1fr 1fr;}
     .phone-mini{display:none;}
   }
   @media (max-width:620px){
+    .price-row{flex-direction:column;gap:6px;}
+    .price-row span:last-child{text-align:left;}
     .services-grid{grid-template-columns:1fr;}
     .adv-grid{grid-template-columns:1fr;}
     .process-list{grid-template-columns:1fr;}
+    .reviews-grid{grid-template-columns:1fr;}
+    .reviews-summary{flex-direction:column;align-items:flex-start;}
     .form-row{grid-template-columns:1fr;}
     .hero-stats{grid-template-columns:1fr;gap:18px;}
     .footer-grid{grid-template-columns:1fr;}
@@ -408,13 +459,14 @@
   <div class="container nav-wrap">
     <a href="#top" class="brand">
       <span class="marks"><span></span><span></span><span></span></span>
-      <span>MITSUBISHI SERVICE<small>независимый сервис Mitsubishi</small></span>
+      <span>MITSUBISHI SERVICE<small>специализированный сервисный центр</small></span>
     </a>
     <nav class="main-links" id="mainNav">
       <a href="#services">Услуги</a>
       <a href="#advantages">Преимущества</a>
       <a href="#models">Модели</a>
-      <a href="#cases">Отзывы</a>
+      <a href="#pricing">Цены</a>
+      <a href="#reviews">Отзывы</a>
       <a href="#faq">FAQ</a>
       <a href="#contacts">Контакты</a>
     </nav>
@@ -609,30 +661,134 @@
   </div>
 </section>
 
-<!-- ===== Cases / Reviews ===== -->
-<section id="cases">
+<!-- ===== Pricing ===== -->
+<section id="pricing">
   <div class="container">
     <div class="section-head">
-      <h2>Реальные кейсы</h2>
-      <p>Несколько примеров работ последних месяцев.</p>
+      <h2>Стоимость основных работ</h2>
+      <p>Ориентировочные цены — точная стоимость определяется после осмотра и диагностики автомобиля.</p>
     </div>
-    <div class="cases-grid">
-      <div class="case-card">
-        <span class="car">Outlander III, 2.4, 2015</span>
-        <p>Клиент обратился с рывками при переключении передач. Диагностика показала износ ремня вариатора JF011E. Выполнили замену ремня и жидкости, рывки устранены.</p>
-        <div class="case-foot"><span>Вариатор</span><span>3 дня</span></div>
+    <div class="price-table">
+      <div class="price-row price-row-head">
+        <span>Вид работ</span>
+        <span>Стоимость</span>
       </div>
-      <div class="case-card">
-        <span class="car">Lancer X, 1.6, 2012</span>
-        <p>Повышенный расход масла и стук на холодную. После диагностики выявлен износ ГРМ и маслосъёмных колпачков. Провели ремонт ГБЦ, стук устранён.</p>
-        <div class="case-foot"><span>Двигатель</span><span>5 дней</span></div>
+      <div class="price-row"><span>Компьютерная диагностика</span><span>от 1&nbsp;500 ₽</span></div>
+      <div class="price-row"><span>Плановое ТО (регламентное обслуживание)</span><span>от 3&nbsp;500 ₽</span></div>
+      <div class="price-row"><span>Замена ремня / цепи ГРМ</span><span>от 6&nbsp;000 ₽</span></div>
+      <div class="price-row"><span>Обслуживание вариатора / АКПП</span><span>от 9&nbsp;000 ₽</span></div>
+      <div class="price-row"><span>Развал-схождение</span><span>от 1&nbsp;800 ₽</span></div>
+      <div class="price-row"><span>Замена сайлентблоков / рычагов подвески</span><span>от 4&nbsp;000 ₽</span></div>
+      <div class="price-row"><span>Кузовной ремонт и покраска</span><span>по смете после осмотра</span></div>
+    </div>
+    <p class="price-note">Цены указаны без стоимости запчастей. Заглушка ХХХХХ — замените на актуальный прайс вашего сервиса.</p>
+  </div>
+</section>
+
+<!-- ===== Reviews ===== -->
+<section id="reviews" class="alt">
+  <div class="container">
+    <div class="section-head">
+      <h2>Отзывы клиентов</h2>
+      <p>Что пишут владельцы Mitsubishi после визита к нам.</p>
+    </div>
+
+    <div class="reviews-summary">
+      <div class="rs-score">
+        <b>4.8</b>
+        <div class="rs-stars" aria-hidden="true">★★★★★</div>
+        <span>на основе 187 отзывов</span>
       </div>
-      <div class="case-card">
-        <span class="car">Pajero Sport II, 2.5D, 2013</span>
-        <p>Стук в передней подвеске на неровностях. Заменили стойки стабилизатора и сайлентблоки рычагов, сделали сход-развал.</p>
-        <div class="case-foot"><span>Подвеска</span><span>1 день</span></div>
+      <div class="rs-bars">
+        <div class="rs-bar-row"><span>5</span><div class="rs-bar"><i style="width:78%"></i></div><span class="rs-pct">78%</span></div>
+        <div class="rs-bar-row"><span>4</span><div class="rs-bar"><i style="width:15%"></i></div><span class="rs-pct">15%</span></div>
+        <div class="rs-bar-row"><span>3</span><div class="rs-bar"><i style="width:5%"></i></div><span class="rs-pct">5%</span></div>
+        <div class="rs-bar-row"><span>2</span><div class="rs-bar"><i style="width:1%"></i></div><span class="rs-pct">1%</span></div>
+        <div class="rs-bar-row"><span>1</span><div class="rs-bar"><i style="width:1%"></i></div><span class="rs-pct">1%</span></div>
       </div>
     </div>
+
+    <div class="reviews-grid">
+      <div class="review-card">
+        <div class="review-top">
+          <div class="avatar">ДК</div>
+          <div>
+            <div class="rv-name">Дмитрий К.</div>
+            <div class="rv-car">Outlander III, 2016</div>
+          </div>
+          <div class="rv-stars">★★★★★</div>
+        </div>
+        <p>Возил машину на вариатор — думал, придётся менять полностью. Ребята сделали диагностику, объяснили на пальцах что с ремнём, поменяли и жидкость заодно. Рывки пропали, ценник оказался ниже, чем я ожидал.</p>
+        <span class="rv-date">2 недели назад</span>
+      </div>
+
+      <div class="review-card">
+        <div class="review-top">
+          <div class="avatar">МС</div>
+          <div>
+            <div class="rv-name">Марина С.</div>
+            <div class="rv-car">ASX, 2018</div>
+          </div>
+          <div class="rv-stars">★★★★★</div>
+        </div>
+        <p>Обслуживаю здесь машину уже третий год. Каждый раз показывают снятые детали и объясняют, что реально нужно менять, а что может подождать. Никогда не навязывали лишнего.</p>
+        <span class="rv-date">1 месяц назад</span>
+      </div>
+
+      <div class="review-card">
+        <div class="review-top">
+          <div class="avatar">ИП</div>
+          <div>
+            <div class="rv-name">Игорь П.</div>
+            <div class="rv-car">Pajero Sport, 2013</div>
+          </div>
+          <div class="rv-stars">★★★★☆</div>
+        </div>
+        <p>Стучала передняя подвеска, в двух других сервисах разводили руками. Тут за один день нашли и поменяли сайлентблоки. Единственное — пришлось подождать своей очереди, запись была плотная.</p>
+        <span class="rv-date">1 месяц назад</span>
+      </div>
+
+      <div class="review-card">
+        <div class="review-top">
+          <div class="avatar">ЕВ</div>
+          <div>
+            <div class="rv-name">Елена В.</div>
+            <div class="rv-car">Lancer X, 2011</div>
+          </div>
+          <div class="rv-stars">★★★★★</div>
+        </div>
+        <p>Приезжала на плановое ТО перед дальней поездкой. Кроме регламентных работ заметили и поменяли треснувший патрубок — сама бы не заметила. По дороге ничего не подвело, спасибо.</p>
+        <span class="rv-date">2 месяца назад</span>
+      </div>
+
+      <div class="review-card">
+        <div class="review-top">
+          <div class="avatar">АТ</div>
+          <div>
+            <div class="rv-name">Артём Т.</div>
+            <div class="rv-car">Outlander PHEV, 2020</div>
+          </div>
+          <div class="rv-stars">★★★★★</div>
+        </div>
+        <p>Долго искал, кто разбирается в гибридной системе, а не только в бензиновых моторах. Здесь сразу сказали, что есть оборудование под PHEV. Диагностику сделали грамотно, ошибку по батарее нашли быстро.</p>
+        <span class="rv-date">3 месяца назад</span>
+      </div>
+
+      <div class="review-card">
+        <div class="review-top">
+          <div class="avatar">ОН</div>
+          <div>
+            <div class="rv-name">Ольга Н.</div>
+            <div class="rv-car">Colt, 2009</div>
+          </div>
+          <div class="rv-stars">★★★★☆</div>
+        </div>
+        <p>Машина уже старая, запчасти пришлось ждать несколько дней под заказ — предупредили заранее, никаких сюрпризов по срокам. Сделали аккуратно, дали гарантию на работы.</p>
+        <span class="rv-date">4 месяца назад</span>
+      </div>
+    </div>
+
+    <p class="reviews-note">Отзывы приведены в качестве примера оформления раздела — перед публикацией замените их на реальные отзывы своих клиентов.</p>
   </div>
 </section>
 
@@ -690,7 +846,7 @@
         </div>
         <div class="field">
           <label for="phone">Телефон</label>
-          <input type="tel" id="phone" name="phone" placeholder="+7 ХХХ ХХХ-ХХ-ХХ" required>
+          <input type="tel" id="phone" name="phone" placeholder="Например: +7 912 345-67-89" required>
         </div>
       </div>
       <div class="form-row">
@@ -739,7 +895,7 @@
           <span class="marks"><span></span><span></span><span></span></span>
           <span>MITSUBISHI SERVICE</span>
         </a>
-        <p>Независимый специализированный сервис по обслуживанию и ремонту автомобилей Mitsubishi.</p>
+        <p>Специализированный сервисный центр по обслуживанию и ремонту автомобилей Mitsubishi. Не является официальным дилером или представительством MMC.</p>
       </div>
       <div class="footer-col">
         <h4>Разделы</h4>
@@ -765,7 +921,7 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© 2026 Mitsubishi Service. Независимый сервис, не является официальным дилером.</span>
+      <span>© 2026 Mitsubishi Service — специализированный сервисный центр. Не является официальным дилерским центром MMC.</span>
       <span>Сайт не использует cookies третьих лиц</span>
     </div>
   </div>
@@ -801,9 +957,7 @@
   // FAQ accordion
   document.querySelectorAll('.faq-item').forEach(item => {
     item.querySelector('.faq-q').addEventListener('click', () => {
-      const wasOpen = item.classList.contains('open');
-      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
-      if(!wasOpen){ item.classList.add('open'); }
+      item.classList.toggle('open');
     });
   });
 
